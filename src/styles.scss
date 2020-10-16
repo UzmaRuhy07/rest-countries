@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+
+html,
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+}
+
+body .detail{
+    font-size: 16px;
+}

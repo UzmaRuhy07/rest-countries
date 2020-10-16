@@ -1,0 +1,26 @@
+<section class="mt-5">
+  <form [formGroup]="filtersForm">
+<div class="d-flex justify-content-between">
+  <div class="p-2">
+    <div class="form-group has-search">
+      <span class="form-control-icon"><fa-icon [icon]="faSearch"></fa-icon></span>
+      <input type="text" class="form-control" formControlName="search" (input)="handleSearchByName()" placeholder="Search for a country">
+    </div>
+  </div>
+  <div class="p-2">
+    <select class="form-control" (change)="handleFilterByRegion()" formControlName="regionFilter">
+      <option *ngFor="let region of regions" [value]="region.name">{{region.text}}</option>
+    </select>
+  </div>
+</div>
+</form>
+
+<p>{{ filteredCountries.length }} countries found.</p>
+
+<div class="card-container" *ngIf="filteredCountries.length; else loading">
+<app-country *ngFor="let country of filteredCountries;" [country]="country"></app-country>
+</div>
+<ng-template #loading>
+  <div style="text-align: center;">Loading ...</div>
+</ng-template>
+</section>
