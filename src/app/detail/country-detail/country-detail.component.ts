@@ -18,7 +18,7 @@ export class CountryDetailComponent implements OnInit {
     private countriesService: CountriesService,
     private location: Location) { }
 
-    faLongArrowLeft = faLongArrowAltLeft; //Icon
+  faLongArrowLeft = faLongArrowAltLeft; //Icon
   country$: Observable<ICountry>;
   allCountries: ICountry[] = [];
 
@@ -38,9 +38,9 @@ export class CountryDetailComponent implements OnInit {
     if (this.countriesService.countries.length) {
       this.allCountries = this.countriesService.countries;
     } else {
-        this.countriesService.getAllCountries().subscribe((response: ICountry[]) => {
-              this.allCountries = response;
-        });
+      this.countriesService.getAllCountries().subscribe((response: ICountry[]) => {
+        this.allCountries = response;
+      });
     }
   }
 

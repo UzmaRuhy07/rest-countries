@@ -4,11 +4,11 @@
   <div class="p-2">
     <div class="form-group has-search">
       <span class="form-control-icon"><fa-icon [icon]="faSearch"></fa-icon></span>
-      <input type="text" class="form-control" formControlName="search" (input)="handleSearchByName()" placeholder="Search for a country">
+      <input type="text" class="form-control theme-element" formControlName="search" (input)="handleSearchByName()" placeholder="Search for a country">
     </div>
   </div>
   <div class="p-2">
-    <select class="form-control" (change)="handleFilterByRegion()" formControlName="regionFilter">
+    <select class="form-control theme-element" (change)="handleFilterByRegion()" formControlName="regionFilter">
       <option *ngFor="let region of regions" [value]="region.name">{{region.text}}</option>
     </select>
   </div>

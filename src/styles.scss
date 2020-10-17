@@ -1,14 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 // @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-
 html,
 body {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
 }
 
-body .detail{
-    font-size: 16px;
+body .detail {
+  font-size: 16px;
+}
+
+/** Variables **/
+$primary: hsl(0, 0%, 98%); // main bg
+$secondary-bg: hsl(0, 0%, 100%); // elements bg
+$color-text: hsl(200, 15%, 8%); // text color
+$color-input: hsl(0, 0%, 52%); // input text color
+
+.theme-light {
+  --primary: hsl(0, 0%, 98%);
+  --secondary-bg: hsl(0, 0%, 100%);
+  --color-text: hsl(200, 15%, 8%);
+}
+.theme-dark {
+  --primary: hsl(207, 26%, 17%);
+  --secondary-bg: hsl(209, 23%, 22%);
+  --color-text: hsl(0, 0%, 100%);
+}
+
+/** global theme for main element **/
+main {
+  color: var(--color-text);
+  background-color: var(--primary);
+}
+
+/** helper classes **/
+.theme-element{
+  background: var(--secondary-bg);
+  color: $color-input;
+  border: 1px solid var(--secondary-bg);
+  &:hover,
+  &:focus {
+    background: var(--secondary-bg);
+    color: $color-input;
+    border: 1px solid var(--secondary-bg);
+    outline: none;
+  }
 }
