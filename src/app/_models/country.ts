@@ -10,5 +10,8 @@ export interface ICountry {
   borders:string[],
   currencies: any[],
   languages: any[],
-  flag: string
+  flag: string,
+  callingCodes?:string[],
+  cioc?: string,
+  timezones?: string[]
 }

@@ -1,47 +1,70 @@
-<section style="margin-top: 4rem;" class="detail">
-<div class="row">
-    <button class="btn btn-light" (click)="onBackPress()"><fa-icon [icon]="faLongArrowLeft"></fa-icon> Back</button>
-</div>
-<div *ngIf="country$ | async as country; else loading">
-<div class="row">
-    <div class="col-sm-12 col-md-6">
-        <img height="auto" width="90%" src="{{country.flag}}">
+<div class="rc-theme detail">
+  <div class="container">
+    <div class="btn-div">
+      <button class="btn theme-element back-btn" (click)="onBackPress()">
+        <fa-icon [icon]="faLongArrowLeft"></fa-icon>
+        <span class="icn-text-padding">Back</span>
+      </button>
     </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="row">
-            <div class="col-sm-12">
-                <h3>{{country.name}} </h3>
-            </div>
+    <div *ngIf="country">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <img class="detail-img" src="{{ country.flag }}" />
         </div>
-        <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h3 class="country-name">{{ country.name }}</h3>
+          <div class="row">
             <div class="col-sm-6">
-                <p> <span class="font-weight-bold mr-2">Native Name:</span><span>{{country.nativeName}}</span></p>
-                <p> <span class="font-weight-bold mr-2">Population:</span><span>{{country.population | number}}</span></p>
-                <p> <span class="font-weight-bold mr-2">Region:</span><span>{{country.region}}</span></p>
-                <p> <span class="font-weight-bold mr-2">Sub Region:</span><span>{{country.subregion}}</span></p>
-                <p> <span class="font-weight-bold mr-2">Capital:</span><span>{{country.capital}}</span></p>
+              <p>
+                <span class="country-props-name">Native Name: </span
+                ><span>{{ country.nativeName }}</span>
+              </p>
+              <p>
+                <span class="country-props-name">Population: </span
+                ><span>{{ country.population | number }}</span>
+              </p>
+              <p>
+                <span class="country-props-name">Region: </span
+                ><span>{{ country.region }}</span>
+              </p>
+              <p>
+                <span class="country-props-name">Sub Region: </span
+                ><span>{{ country.subregion }}</span>
+              </p>
+              <p>
+                <span class="country-props-name">Capital: </span
+                ><span>{{ country.capital }}</span>
+              </p>
             </div>
-            <div class="col-sm-6">
-                <p> <span class="font-weight-bold mr-2">Top Level Domain:</span><span>{{country.topLevelDomain | combineTexts}}</span></p>
-                <p> <span class="font-weight-bold mr-2">Currencies:</span><span>{{country.currencies | combineTexts : 'name' }}</span></p>
-                <p> <span class="font-weight-bold mr-2">Languages:</span><span>{{country.languages | combineTexts : 'name' }}</span></p>
+            <div class="col-sm-6 country-props2">
+              <p>
+                <span class="country-props-name">Top Level Domain: </span
+                ><span>{{ country.topLevelDomain | combineTexts }}</span>
+              </p>
+              <p>
+                <span class="country-props-name">Currencies: </span
+                ><span>{{ country.currencies | combineTexts: "name" }}</span>
+              </p>
+              <p>
+                <span class="country-props-name">Languages: </span
+                ><span>{{ country.languages | combineTexts: "name" }}</span>
+              </p>
             </div>
-        </div>
-        <div class="row">
+          </div>
+          <div class="row country-borders">
             <div class="col-sm-12">
-                <p> <span class="font-weight-bold mr-2">Border Countries:</span>
-                    <span>
-                    <button class="btn btn-light mr-4 mb-2" *ngFor="let border of country.borders" (click)="onBorderCountryPress(border)">
-                      {{border | textById : allCountries : 'name' : 'alpha3Code'  }}
-                    </button>
-                    </span>
-                </p>
+              <span class="country-props-name pr-2">Border Countries: </span>
+                <div class="border-btns-block">
+                  <button class="btn theme-element border-btn" *ngFor="let border of country.borders"
+                    (click)="onBorderCountryPress(border)">
+                    {{border | textById : allCountries : 'name' : 'alpha3Code'  }}
+                  </button>
+                </div>
+
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-</div>
-<ng-template #loading>
-  <div style="text-align: center;">Loading ...</div>
-</ng-template>
-</section>

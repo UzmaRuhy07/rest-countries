@@ -3,14 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const routes: Routes = [
+
+  {
+    path: 'countries',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
   {
     path:'',
     redirectTo: 'countries',
     pathMatch:'full'
-  },
-  {
-    path: 'countries',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'detail/:code',

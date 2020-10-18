@@ -1,4 +1,26 @@
 .card {
-  margin: 0 8px 16px;
+  border-radius: 5px;
   color: var(--color-text);
+  img{
+    height:140px;
+    object-fit:cover;
+    border-radius: 5px 5px 0 0;
+    box-shadow: var( --shadow);
+    @media only screen and (min-width: 320px) and (max-width: 540px){
+      height:150px;
+    }
+  }
+  .card-body{
+    min-height: 180px;
+    .card-title{
+      font-weight: var(--font-wt-extra-bold);
+      font-size: 16px;
+    }
+    .card-props{
+      margin-bottom: 0.2rem;
+      .card-props-name{
+        font-weight: var(--font-wt-bold);
+      }
+    }
+  }
 }

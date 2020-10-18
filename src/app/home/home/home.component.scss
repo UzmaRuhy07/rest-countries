@@ -1,23 +1,57 @@
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
+.filter-items {
+  padding: 0 1%;
+  .country-search {
+    @media screen and (min-width: 541px) {
+      width: 35%;
+      padding: 20px 0;
+    }
+    .form-control {
+      padding-left: 3rem;
+      &::placeholder {
+        color: var(--color-input);
+      }
+    }
+
+    .form-control-lg {
+      font-size: 14px;
+      height: calc(2em + 1rem + 2px);
+    }
+    .form-control-icon {
+      position: absolute;
+      z-index: 2;
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      line-height: 3.2rem;
+      text-align: center;
+      pointer-events: none;
+      color: var(--color-input);
+    }
   }
 
-
-  .has-search .form-control {
-    padding-left: 2.375rem;
+  .region-filter {
+    padding: 20px 0;
+    @media screen and (max-width: 575px) {
+      width: 60%;
+    }
+    .form-control-lg {
+      font-size: 14px;
+      height: calc(2em + 1rem + 2px);
+    }
+  }
+}
+.countries-found {
+  @media screen and (max-width: 575px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 576px) {
+    padding: 0 2%;
+  }
 }
 
-.has-search .form-control-icon {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #aaa;
+.country-card {
+  padding: 2.5%;
+  @media only screen and (min-width: 320px) and (max-width: 575px) {
+    padding: 5% 15%;
+  }
 }

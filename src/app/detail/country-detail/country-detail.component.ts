@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../../_services/countries.service';
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
 import { ICountry } from '../../_models/country';
 import { Location } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-country-detail',
@@ -16,25 +16,40 @@ export class CountryDetailComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private countriesService: CountriesService,
-    private location: Location) { }
+    private location: Location,
+    private spinnerService: NgxSpinnerService) { }
 
   faLongArrowLeft = faLongArrowAltLeft; //Icon
-  country$: Observable<ICountry>;
+  country: ICountry;
   allCountries: ICountry[] = [];
 
 
   ngOnInit(): void {
+    //To support bookmark loading, using country code
     this.route.paramMap.subscribe(params => {
       this.loadCountryDetails(params.get('code'));
     });
     this.prepareAllCountries();
   }
 
+  // Fetch full details of the country
   loadCountryDetails(countryCode: string): void {
-    this.country$ = this.countriesService.getCountryByCode(countryCode);
+    this.countriesService.getCountryByCode(countryCode).subscribe(
+      (response) => {
+        this.spinnerService.hide();
+        this.country = response;
+      },
+      (error) => { //Error callback
+        this.spinnerService.hide();
+        this.router.navigate(['errorpage'], { relativeTo: this.route });
+      }
+    );
   }
 
-  prepareAllCountries() {
+  /* when navigated from home, use already fetched countries avoid API call,
+  *  incase of bookmark loading fetch all countries to get border names
+  */
+  prepareAllCountries(): void{
     if (this.countriesService.countries.length) {
       this.allCountries = this.countriesService.countries;
     } else {
@@ -44,12 +59,15 @@ export class CountryDetailComponent implements OnInit {
     }
   }
 
+  // When clicked on border button, re-route with border country code
   onBorderCountryPress(borderCountryCode: string): void {
     this.router.navigate(['/detail', borderCountryCode], { relativeTo: this.route });
   }
 
+  // on back button press, use angular location service to navigate to previous page
   onBackPress() {
     this.location.back();
   }
+
 
 }
