@@ -1,3 +1,4 @@
+<!-- Detail Page -->
 <div class="rc-theme detail">
   <div class="container">
     <div class="btn-div">
@@ -8,9 +9,11 @@
     </div>
     <div *ngIf="country">
       <div class="row">
+        <!-- Image Left Block -->
         <div class="col-sm-12 col-md-6">
           <img class="detail-img" src="{{ country.flag }}" />
         </div>
+        <!-- Country Right Block -->
         <div class="col-sm-12 col-md-6">
           <h3 class="country-name">{{ country.name }}</h3>
           <div class="row">
@@ -51,6 +54,7 @@
               </p>
             </div>
           </div>
+          <!-- border countries -->
           <div class="row country-borders">
             <div class="col-sm-12">
               <span class="country-props-name pr-2">Border Countries: </span>
