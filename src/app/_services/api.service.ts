@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
-
+//Service to make http requests
   constructor(private http: HttpClient) { }
 
   get(endpoint : string, params?: {}) {

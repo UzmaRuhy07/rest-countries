@@ -1,26 +1,50 @@
-<section class="mt-5">
-  <form [formGroup]="filtersForm">
-<div class="d-flex justify-content-between">
-  <div class="p-2">
-    <div class="form-group has-search">
-      <span class="form-control-icon"><fa-icon [icon]="faSearch"></fa-icon></span>
-      <input type="text" class="form-control" formControlName="search" (input)="handleSearchByName()" placeholder="Search for a country">
+<div class="rc-theme">
+  <div class="container">
+    <!-- Search and Filter inputs -->
+    <form [formGroup]="filtersForm">
+      <div class="d-sm-flex justify-content-between filter-items">
+        <div class="country-search">
+          <span class="form-control-icon">
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </span>
+          <input
+            type="text"
+            class="form-control form-control-lg theme-element"
+            formControlName="search"
+            (input)="handleSearchByName()"
+            placeholder="Search for a country..."
+          />
+        </div>
+
+        <div class="region-filter">
+          <select
+            class="form-control form-control-lg theme-element"
+            (change)="handleFilterByRegion()"
+            formControlName="regionFilter"
+          >
+            <option class="form-control" *ngFor="let region of regions" [value]="region.name">
+              {{ region.text }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <!-- search results text -->
+    <p class="countries-found">
+      {{ filteredCountries.length }} countries found.
+    </p>
+
+    <!-- Countries Cards -->
+    <div class="card-container">
+      <div class="row">
+        <app-country
+          class="col-sm-6 col-md-4 col-lg-3 p-xs-5 country-card"
+          *ngFor="let country of filteredCountries"
+          [country]="country"
+        >
+        </app-country>
+      </div>
     </div>
   </div>
-  <div class="p-2">
-    <select class="form-control" (change)="handleFilterByRegion()" formControlName="regionFilter">
-      <option *ngFor="let region of regions" [value]="region.name">{{region.text}}</option>
-    </select>
-  </div>
 </div>
-</form>
-
-<p>{{ filteredCountries.length }} countries found.</p>
-
-<div class="card-container" *ngIf="filteredCountries.length; else loading">
-<app-country *ngFor="let country of filteredCountries;" [country]="country"></app-country>
-</div>
-<ng-template #loading>
-  <div style="text-align: center;">Loading ...</div>
-</ng-template>
-</section>

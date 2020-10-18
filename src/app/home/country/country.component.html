@@ -1,10 +1,10 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{country.flag}}" alt="Card image">
-    <div class="card-body">
-      <h5 class="card-title">{{country.name}}</h5>
-      <div> <span class="font-weight-bold mr-2">Population:</span><span>{{country.population | number}}</span></div>
-      <div> <span class="font-weight-bold mr-2">Region:</span><span>{{country.region}}</span></div>
-      <div> <span class="font-weight-bold mr-2">Capital:</span><span>{{country.capital}}</span></div>
-      <a class="stretched-link" [routerLink]="['/detail', country.alpha3Code]"></a>
-    </div>
+<!-- Country Card -->
+<div class="card border-0 theme-element" [routerLink]="['/detail', country.alpha3Code]">
+  <img src="{{country.flag}}" class="rc-shadow" alt="Card image">
+  <div class="card-body">
+    <p class="card-title">{{country.name}}</p>
+    <p class="card-text card-props"><span class="card-props-name">Population:</span> {{country.population | number}}</p>
+    <p class="card-text card-props"><span class="card-props-name">Region:</span> {{country.region}}</p>
+    <p class="card-text card-props"><span class="card-props-name">Capital:</span> {{country.capital}}</p>
+  </div>
 </div>

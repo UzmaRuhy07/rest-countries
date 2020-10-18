@@ -1,0 +1,52 @@
+.detail {
+  font-size: 16px;
+  .container {
+    @media screen and (max-width: 575px) {
+      padding: 0 6% 6% 6%;
+    }
+    .back-btn {
+      min-width: 100px;
+    }
+    .btn-div {
+      padding: 30px 0;
+    }
+
+    .detail-img {
+      max-width: 90%;
+      @media screen and (max-width: 575px) {
+        max-width: 100%;
+      }
+    }
+
+    .icn-text-padding {
+      padding-left: 8px;
+    }
+    .country-name {
+      font-weight: var(--font-wt-extra-bold);
+      padding: 20px 0;
+    }
+    .country-props-name {
+      font-weight: var(--font-wt-bold);
+    }
+    .country-props2,
+    .country-borders {
+      padding-top: 2rem;
+      @media screen and (max-width: 575px) {
+        padding-top: 2rem;
+      }
+    }
+    .border-btns-block {
+      display: inline;
+      @media screen and (max-width: 575px) {
+        display: block;
+      }
+
+      .border-btn {
+        min-width: 90px;
+        margin-right: 10px;
+        margin-bottom: 6px;
+      }
+    }
+  }
+}
+

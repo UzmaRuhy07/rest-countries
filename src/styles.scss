@@ -1,14 +1,121 @@
 /* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 
 html,
 body {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
 }
 
-body .detail{
-    font-size: 16px;
+/*=================================
+      variables
+=================================*/
+:root {
+  --primary: hsl(0, 0%, 98%); // main bg
+  --secondary-bg: hsl(0, 0%, 100%); // elements bg
+  --color-text: hsl(200, 15%, 8%); // text color
+  --color-input: hsl(0, 0%, 52%); // input text color
+  --shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  --font-wt-light: 300;
+  --font-wt-bold: 600;
+  --font-wt-extra-bold: 800;
+}
+
+.theme-light {
+  --primary: hsl(0, 0%, 98%);
+  --secondary-bg: hsl(0, 0%, 100%);
+  --color-text: hsl(200, 15%, 8%);
+  --color-input: hsl(0, 0%, 52%);
+}
+.theme-dark {
+  --primary: hsl(207, 26%, 17%);
+  --secondary-bg: hsl(209, 23%, 22%);
+  --color-text: hsl(0, 0%, 100%);
+  --color-input: hsl(0, 0%, 100%);
+}
+
+
+/*=================================
+      main theme element
+=================================*/
+.rc-theme {
+  color: var(--color-text);
+  background-color: var(--primary);
+  min-height: 95.8vh;
+
+  @media (min-width: 320px) {
+    margin-top: 12%;
+    padding-top: 7%;
+  }
+
+  @media (min-width: 411px) {
+    margin-top: 8%;
+    padding-top: 8%;
+  }
+  @media (min-width: 576px) {
+    margin-top: 5%;
+    padding-top: 5%;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 3%;
+    padding-top: 3%;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 2%;
+    padding-top: 2%;
+  }
+
+}
+
+/*=================================
+      Helper Classes
+=================================*/
+.theme-element {
+  background: var(--secondary-bg);
+  color: var(--color-text);
+  border: 1px solid var(--secondary-bg);
+  box-shadow: var(--shadow);
+  &:hover,
+  &:focus {
+    background: var(--secondary-bg);
+    color: var(--color-text);
+    border: 1px solid var(--secondary-bg);
+    outline: none;
+  }
+}
+
+.theme-header {
+  background-color: var(--secondary-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow);
+  padding: 1% 0;
+}
+
+.icn-text-padding {
+  padding-left: 3px;
+}
+
+/*=================================
+      custom scroll
+=================================*/
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(179, 179, 179);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(138, 138, 138);
 }

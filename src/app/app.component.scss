@@ -1,5 +1,30 @@
-.theme {
-    .container{
-      margin-top: 2rem;
+nav {
+  a {
+    color: var(--color-text);
+    &:hover,
+    &:focus {
+      color: var(--color-text);
     }
+    .brand-text{
+      font-weight: var(--font-wt-extra-bold);
+    }
+  }
+  button {
+    color: var(--color-text);
+    &:hover,
+    &:focus {
+      color: var(--color-text);
+    }
+    span{
+      font-weight: var(--font-wt-bold);
+    }
+  }
 }
+
+
+.loading-text {
+    color: #fff;
+    font-size:20px;
+}
+
+

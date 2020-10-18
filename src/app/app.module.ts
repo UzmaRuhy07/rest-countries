@@ -3,8 +3,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxSpinnerModule }  from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { APP_BASE_HREF } from '@angular/common';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -13,12 +17,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxSpinnerModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    {provide: APP_BASE_HREF, useValue:'/'},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
